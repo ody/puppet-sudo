@@ -44,19 +44,18 @@ Cmnd_Alias BACKUP = /usr/bin/rsync
 
 # Defaults specification
 
-# Disable "ssh hostname sudo <cmd>", because it will show the password in clear. 
+# Disable "ssh hostname sudo <cmd>", because it will show the password in clear.
 #         You have to run "ssh -t hostname sudo <cmd>".
 #
 <% if scope.lookupvar('sudo::params::requiretty') == true %>Defaults    requiretty<% end %>
 
-# Refuse to run if unable to disable echo on the tty. This setting should also be                                                                            # changed in order to be able to use sudo without a tty. See requiretty above.                                                                                                     
+# Refuse to run if unable to disable echo on the tty. This setting should also be changed in order to be able to use sudo without a tty. See requiretty above.
 #
-Defaults   !visiblepw                                                                                                                                                              
-                                                                                                                                                                                   
+Defaults   !visiblepw
 #
 # Preserving HOME has security implications since many programs
 # use it when searching for configuration files.
-#                                                                                                                                                                                  
+#
 Defaults    always_set_home
 
 Defaults    env_reset
@@ -67,10 +66,10 @@ Defaults    env_keep = "COLORS DISPLAY HOSTNAME HISTSIZE INPUTRC KDEDIR \
                         LC_PAPER LC_TELEPHONE LC_TIME LC_ALL LANGUAGE LINGUAS \
                         _XKB_CHARSET XAUTHORITY"
 
-## Allow root to run any commands anywhere 
-root	ALL=(ALL) 	ALL
+## Allow root to run any commands anywhere
+root	ALL=(ALL)	ALL
 
-## Allows members of the 'sys' group to run networking, software, 
+## Allows members of the 'sys' group to run networking, software,
 ## service management apps and more.
 # %sys ALL = NETWORKING, SOFTWARE, SERVICES, STORAGE, DELEGATING, PROCESSES, LOCATE, DRIVERS
 
@@ -83,3 +82,4 @@ root	ALL=(ALL) 	ALL
 <% end -%>
 <% end -%>
 
+#includedir /etc/sudoers.d
